@@ -10,73 +10,49 @@
 
 
 	<?php echo $form->errorSummary($model); ?>
+        
+        <?php $datos = CHtml::listData(Ficha::model()->findAll(),'idficha','nficha'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idficha',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'nficha'); ?>
-		<?php echo $form->textField($model,'nficha',array('size'=>5,'maxlength'=>5)); ?>
-		<?php echo $form->error($model,'nficha'); ?>
-	</div>
+        <?php $datos1 = CHtml::listData(Departamento::model()->findAll(),'iddepartamento','nomdepartamento'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idarea',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos1))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'idarea'); ?>
-		<?php echo $form->textField($model,'idarea'); ?>
-		<?php echo $form->error($model,'idarea'); ?>
-	</div>
+        <?php $datos2 = CHtml::listData(Actividad::model()->findAll(),'idactividad','nomactividad'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idactividad',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos2))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'idactividad'); ?>
-		<?php echo $form->textField($model,'idactividad'); ?>
-		<?php echo $form->error($model,'idactividad'); ?>
-	</div>
+	
+	
 
-	        <?php echo $form->datePickerGroup($model,'fecha',array('widgetOptions'=>array('options'=>array('format'=>'yyyy/mm/dd'),'htmlOptions'=>array('class'=>'span5')), 'prepend'=>'<i class="glyphicon glyphicon-calendar"></i>', 'append'=>'Selecciona la Fecha Inicial del Evento')); ?>
+	        <?php echo $form->datePickerGroup($model,'fecha',array('widgetOptions'=>array('options'=>array('format'=>'yyyy/mm/dd'),'htmlOptions'=>array('class'=>'span5')), 'prepend'=>'<i class="glyphicon glyphicon-calendar"></i>', 'append'=>'Selecciona la Fecha de creación')); ?>
+
+                <?php echo $form->textFieldGroup($model,'responsable',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+
+                <?php echo $form->textFieldGroup($model,'antiguedad',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'responsable'); ?>
-		<?php echo $form->textField($model,'responsable',array('size'=>60,'maxlength'=>60)); ?>
-		<?php echo $form->error($model,'responsable'); ?>
-	</div>
+	<?php echo $form->textFieldGroup($model,'ip',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'antiguedad'); ?>
-		<?php echo $form->textField($model,'antiguedad',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'antiguedad'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'ip'); ?>
-		<?php echo $form->textField($model,'ip',array('size'=>15,'maxlength'=>15)); ?>
-		<?php echo $form->error($model,'ip'); ?>
-	</div>
+	<?php echo $form->textFieldGroup($model,'mac',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'mac'); ?>
-		<?php echo $form->textField($model,'mac',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'mac'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'wireless'); ?>
-		<?php echo $form->textField($model,'wireless',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'wireless'); ?>
-	</div>
+	<?php echo $form->textFieldGroup($model,'wireless',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'nomusuequi'); ?>
-		<?php echo $form->textField($model,'nomusuequi',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'nomusuequi'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'nomusured'); ?>
-		<?php echo $form->textField($model,'nomusured',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'nomusured'); ?>
-	</div>
+	<?php echo $form->textFieldGroup($model,'nomusuequi',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+
+	<?php echo $form->textFieldGroup($model,'nomusured',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+
+
+	<div class="form-actions">
+	<?php $this->widget('booster.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'context'=>'primary',
+			'label'=>$model->isNewRecord ? 'Crear' : 'Guardar',
+		)); ?>
+</div>
+
 
 <?php $this->endWidget(); ?>
 

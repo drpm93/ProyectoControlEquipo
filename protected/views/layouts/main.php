@@ -1,61 +1,75 @@
-<?php /* @var $this Controller */ ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo Yii::app()->language;?>">
+<meta charset="utf-8">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="language" content="en">
-
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection">
-	<![endif]-->
-
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
-
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+<meta charset="<?php echo Yii::app()->charset;?>">
+ 
+<link href="css/main.css" type="text/css" rel="stylesheet">
 </head>
+<body style="background-image: url('images/gondisa.gif');  background-repeat: no-repeat; background-position: top right;">
+<header>
+<?php
+$this->widget(
+'booster.widgets.TbNavbar',
+array(
+//'type' => 'inverse',
+'brand' => '',
+'brandUrl' => '#',
+'collapse' => true, // requires bootstrap-responsive.css
+'fixed' => false,
+'fluid' => true,
+'items' => array(
+array(
+'class' => 'booster.widgets.TbMenu',
+'type' => 'navbar',
+'items' => array(
+array('label' => 'Inicio', 'url' =>array('/site/index'), ),
+        array(
+'label' => 'Fichas de equipos',
+'url' => '#',
+'visible'=>!Yii::app()->user->isGuest,
+'items' => array(
+array('label' => 'Crear ficha de equipo', 'url' => array('/ficha/create')),
+//array('label' => 'Lista de Médicos', 'url' => array('/medico/index')),
+array('label' => 'Lista de fichas', 'url' =>array('/ficha/admin')),
+    
+ '---',
+    '---',
+)
+),
+),
+),
+     array(
+'class' => 'booster.widgets.TbMenu',
+'type' => 'navbar',
+'htmlOptions' => array('class' => 'pull-right'),
+'items' => array(
+array('label' => 'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+array('label'=>'Cerrar Sesión ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+'---',
 
-<body>
-
-<div class="container" id="page">
-
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Departamentos', 'url'=>array('/departamento/index')),
-                                array('label'=>'Actividades', 'url'=>array('/actividad/index')),
-                                array('label'=>'Marcas', 'url'=>array('/marca/index')),
-                                array('label'=>'Fichas', 'url'=>array('/ficha/index')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
-
-	<?php echo $content; ?>
-
-	<div class="clear"></div>
-
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
-
-</div><!-- page -->
-
+),
+),
+),
+)
+);
+?>
+</header>
+<div class="container" id="main" >
+ <?php if(isset($this->breadcrumbs)):?>
+ <?php $this->widget('booster.widgets.TbBreadcrumbs', array(
+ 'links'=>$this->breadcrumbs,
+ )); ?>
+ <?php endif?>
+ <?php echo $content; ?>
+ <hr>
+ 
+<footer>
+ Copyright &copy; <?php echo date('Y'); ?> <?php //echo CHtml::encode(Yii::app()->params['empresa']); ?> | <?php echo CHtml::encode((Yii::app()->name).' '.Yii::app()->params['version']); ?> - All Rights Reserved.<br/>
+ <?php //echo Yii::powered(); ?>
+ </footer>
+ 
+</div>
 </body>
 </html>
