@@ -1,0 +1,58 @@
+.clasecreadaporgaby {
+    width: 200px;
+    display: block;
+    flex-direction: row;
+    float: left;
+    
+}
+
+.enlaceboton a{
+    color: white;
+}
+.enlaceboton {    
+    font-family: verdana, arial, sans-serif;
+   font-size: 10pt;
+   font-weight: bold;
+   padding: 4px;
+   color:#fff;background-color:#428bca;border-color: 4px solid #357ebd;
+    border-radius: 4px 4px 4px 4px;
+-moz-border-radius: 4px 4px 4px 4px;
+-webkit-border-radius: 4px 4px 4px 4px;
+}
+.enlaceboton:link,
+.enlaceboton:visited {
+    color:#fff;background-color:#3276b1;border-color:#285e8e
+}
+.enlaceboton:hover {
+    color:#fff;background-color:#3276b1;border-color:#285e8e
+} 
+
+
+.princi {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row;
+    
+}
+
+.sexion{
+    flex: 1 6 20%;
+    order: 1;
+}
+
+.conten{
+    order:2;
+    flex: 80%;
+    border:1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+    border-color: #c0c0c0;
+    border-width: 0.5px;
+    padding: 19px;
+        
+}
+body{
+    
+
+}
+.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }.datagrid table td, .datagrid table th { padding: 3px 10px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#ffffff; font-size: 15px; font-weight: bold; border-left: 1px solid #0070A8; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 12px;font-weight: normal; }.datagrid table tbody .alt td { background: #E1EEF4; color: #00496B; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }
