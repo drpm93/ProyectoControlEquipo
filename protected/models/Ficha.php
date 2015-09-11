@@ -16,6 +16,7 @@
  * @property string $wireless
  * @property string $nomusuequi
  * @property string $nomusured
+ * @property string $ubicacion
  *
  * The followings are the available model relations:
  * @property Direcciones[] $direcciones
@@ -46,11 +47,12 @@ class Ficha extends CActiveRecord
 			array('nficha', 'length', 'max'=>5),
 			array('responsable', 'length', 'max'=>60),
 			array('antiguedad', 'length', 'max'=>40),
+                        array('ubicacion', 'length', 'max'=>100),
 			array('ip', 'length', 'max'=>15),
 			array('mac, wireless, nomusuequi, nomusured', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idficha, nficha, idarea, idactividad, fecha, responsable, antiguedad, ip, mac, wireless, nomusuequi, nomusured', 'safe', 'on'=>'search'),
+			array('idficha, nficha, idarea, fecha1,idactividad, fecha, ubicacion,departamento,actividad,responsable, antiguedad, ip, mac, wireless, nomusuequi, nomusured', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,8 +66,8 @@ class Ficha extends CActiveRecord
 		return array(
 			'direcciones' => array(self::HAS_MANY, 'Direcciones', 'idficha'),
 			'caracteristicases' => array(self::HAS_MANY, 'Caracteristicas', 'idficha'),
-			'idarea0' => array(self::BELONGS_TO, 'Departamento', 'idarea'),
-			'idactividad0' => array(self::BELONGS_TO, 'Actividad', 'idactividad'),
+			'pkdepartamento' => array(self::BELONGS_TO, 'Departamento', 'idarea'),
+			'pkactividad' => array(self::BELONGS_TO, 'Actividad', 'idactividad'),
 		);
 	}
 
@@ -76,17 +78,18 @@ class Ficha extends CActiveRecord
 	{
 		return array(
 			'idficha' => 'Idficha',
-			'nficha' => 'Nficha',
-			'idarea' => 'Idarea',
-			'idactividad' => 'Idactividad',
-			'fecha' => 'Fecha',
-			'responsable' => 'Responsable',
-			'antiguedad' => 'Antiguedad',
-			'ip' => 'Ip',
-			'mac' => 'Mac',
-			'wireless' => 'Wireless',
-			'nomusuequi' => 'Nomusuequi',
-			'nomusured' => 'Nomusured',
+			'nficha' => 'Número de ficha',
+			'idarea' => 'Departamento',
+			'idactividad' => 'Actividad',
+			'fecha' => 'Fecha de registro',
+			'responsable' => 'Responsable del equipo',
+			'antiguedad' => 'Antigüedad del equipo',
+			'ip' => 'IP ADRESS',
+			'mac' => 'MAC ADDRES',
+			'wireless' => 'WIRELESS MAC',
+			'nomusuequi' => 'NomBRE USUARIO EQUIPO',
+			'nomusured' => 'NOMBRE USUARIO RED',
+                        'ubicacion' => 'Ubicacíon del equipo',
 		);
 	}
 
@@ -102,6 +105,9 @@ class Ficha extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
+        public $departamento;
+        public $actividad;
+        public $fecha1;
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -111,8 +117,14 @@ class Ficha extends CActiveRecord
 		$criteria->compare('idficha',$this->idficha);
 		$criteria->compare('nficha',$this->nficha,true);
 		$criteria->compare('idarea',$this->idarea);
+                $criteria->with = array('pkdepartamento');
+                $criteria->addSearchCondition('pkdepartamento.nomdepar', $this->departamento, true);
 		$criteria->compare('idactividad',$this->idactividad);
+                $criteria->with = array('pkactividad');
+                $criteria->AddSearchCondition('pkactividad.nomactividad', $this->actividad, true);
 		$criteria->compare('fecha',$this->fecha,true);
+                //se puede buscar en un intervalo de fechas
+                $criteria->addBetweenCondition('fecha', ''.$this->fecha1.'', ''.$this->fecha1.'');
 		$criteria->compare('responsable',$this->responsable,true);
 		$criteria->compare('antiguedad',$this->antiguedad,true);
 		$criteria->compare('ip',$this->ip,true);
@@ -120,6 +132,7 @@ class Ficha extends CActiveRecord
 		$criteria->compare('wireless',$this->wireless,true);
 		$criteria->compare('nomusuequi',$this->nomusuequi,true);
 		$criteria->compare('nomusured',$this->nomusured,true);
+                $criteria->compare('ubicacion',$this->ubicacion,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

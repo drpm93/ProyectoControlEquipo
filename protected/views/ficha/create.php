@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Fichas'=>array('index'),
-	'Create',
+	'Crear ficha',
 );
 
 $this->menu=array(
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Ficha</h1>
+<h1>Crear ficha de equipo</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

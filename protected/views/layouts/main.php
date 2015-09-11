@@ -36,6 +36,8 @@ array('label' => 'Lista de fichas', 'url' =>array('/ficha/admin')),
     
  '---',
     '---',
+array('label' => 'Crear Departamento', 'url' => array('/departamento/create')),
+array('label' => 'Crear Actividad', 'url' =>array('/actividad/create')),
 )
 ),
 ),

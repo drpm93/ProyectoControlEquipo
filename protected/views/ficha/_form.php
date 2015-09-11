@@ -11,10 +11,10 @@
 
 	<?php echo $form->errorSummary($model); ?>
         
-        <?php $datos = CHtml::listData(Ficha::model()->findAll(),'idficha','nficha'); ?>
-	<?php echo $form->dropDownListGroup($model, 'idficha',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos))); ?>
+       <?php echo $form->textFieldGroup($model,'nficha',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+        <?php echo $form->textFieldGroup($model,'ubicacion',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
-        <?php $datos1 = CHtml::listData(Departamento::model()->findAll(),'iddepartamento','nomdepartamento'); ?>
+        <?php $datos1 = CHtml::listData(Departamento::model()->findAll(),'iddepartamento','nomdepar'); ?>
 	<?php echo $form->dropDownListGroup($model, 'idarea',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos1))); ?>
 
         <?php $datos2 = CHtml::listData(Actividad::model()->findAll(),'idactividad','nomactividad'); ?>

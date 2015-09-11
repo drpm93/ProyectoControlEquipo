@@ -8,20 +8,19 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Ficha', 'url'=>array('index')),
-	array('label'=>'Create Ficha', 'url'=>array('create')),
-	array('label'=>'Update Ficha', 'url'=>array('update', 'id'=>$model->idficha)),
-	array('label'=>'Delete Ficha', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idficha),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Ficha', 'url'=>array('admin')),
+	array('label'=>'Lista de fichas', 'url'=>array('index')),
+	array('label'=>'Crear ficha', 'url'=>array('create')),
+	array('label'=>'Actualizar ficha', 'url'=>array('update', 'id'=>$model->idficha)),
+	array('label'=>'Eliminar ficha', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idficha),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrción de fichas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Ficha #<?php echo $model->idficha; ?></h1>
+<h1>Vista de ficha #<?php echo $model->nficha; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'idficha',
 		'nficha',
 		'idarea',
 		'idactividad',
