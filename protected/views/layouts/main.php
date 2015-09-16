@@ -35,9 +35,13 @@ array('label' => 'Crear ficha de equipo', 'url' => array('/ficha/create')),
 array('label' => 'Lista de fichas', 'url' =>array('/ficha/admin')),
     
  '---',
-    '---',
+    
 array('label' => 'Crear Departamento', 'url' => array('/departamento/create')),
 array('label' => 'Crear Actividad', 'url' =>array('/actividad/create')),
+    '---',
+    '---',
+array('label' => 'Agregar caracteristicas a fichas', 'url' => array('/caracteristicas/create')),
+array('label' => 'Crear marca de equipo', 'url' =>array('/marca/create')),
 )
 ),
 ),

@@ -133,6 +133,12 @@ class Ficha extends CActiveRecord
 		$criteria->compare('nomusuequi',$this->nomusuequi,true);
 		$criteria->compare('nomusured',$this->nomusured,true);
                 $criteria->compare('ubicacion',$this->ubicacion,true);
+                //se guarda la busqueda en una sesion 
+                $session=new CHttpSession;
+                            $session->open();
+
+                            $session['reporte_ficha']=$criteria;  //Esto para guardar la criteria en la sesión actual para usarlo posteriormente.
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

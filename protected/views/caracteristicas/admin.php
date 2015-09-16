@@ -63,3 +63,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 	),
 )); ?>
+<br>
+<br>
+<center>
+<div class="enlaceboton" style="width: 180px">
+<?php echo CHtml::link(CHtml::image(Yii::app()->baseUrl."/images/pdf.jpg","Generar reporte PDF",array("title"=>"Exportar a PDF")),array("generarpdf"), array('target'=>'_blank')); ?>
+</div>
+    
+</center>

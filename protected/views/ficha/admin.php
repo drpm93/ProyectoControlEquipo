@@ -107,3 +107,4 @@ $date = $this->widget('zii.widgets.jui.CJuiDatePicker', array(
 		),
 	),
 )); ?>
+

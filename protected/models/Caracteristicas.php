@@ -46,7 +46,7 @@ class Caracteristicas extends CActiveRecord
 			array('aplica, noaplica', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idcaracteristica, idficha, descripcion, aplica, noaplica, idmarca, modelo, nserie, cantidad, tipo, caracteristica', 'safe', 'on'=>'search'),
+			array('idcaracteristica,marca,ficha,idficha, descripcion, aplica, noaplica, idmarca, modelo, nserie, cantidad, tipo, caracteristica', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,8 +58,8 @@ class Caracteristicas extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idficha0' => array(self::BELONGS_TO, 'Ficha', 'idficha'),
-			'idmarca0' => array(self::BELONGS_TO, 'Marca', 'idmarca'),
+			'pkficha' => array(self::BELONGS_TO, 'Ficha', 'idficha'),
+			'pkmarca' => array(self::BELONGS_TO, 'Marca', 'idmarca'),
 		);
 	}
 
@@ -70,16 +70,16 @@ class Caracteristicas extends CActiveRecord
 	{
 		return array(
 			'idcaracteristica' => 'Idcaracteristica',
-			'idficha' => 'Idficha',
-			'descripcion' => 'Descripcion',
+			'idficha' => 'Número de ficha',
+			'descripcion' => 'Descripción del elemento',
 			'aplica' => 'Aplica',
-			'noaplica' => 'Noaplica',
-			'idmarca' => 'Idmarca',
+			'noaplica' => 'No aplica',
+			'idmarca' => 'Marca',
 			'modelo' => 'Modelo',
-			'nserie' => 'Nserie',
+			'nserie' => 'Número serie',
 			'cantidad' => 'Cantidad',
 			'tipo' => 'Tipo',
-			'caracteristica' => 'Caracteristica',
+			'caracteristica' => 'Característica',
 		);
 	}
 
@@ -95,6 +95,7 @@ class Caracteristicas extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
+        public $ficha,$marca;
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -103,15 +104,23 @@ class Caracteristicas extends CActiveRecord
 
 		$criteria->compare('idcaracteristica',$this->idcaracteristica);
 		$criteria->compare('idficha',$this->idficha);
+                $criteria->with= array('pkficha');
+                $criteria->addSearchCondition('pkficha.nficha', $this->ficha, true);
 		$criteria->compare('descripcion',$this->descripcion,true);
 		$criteria->compare('aplica',$this->aplica);
 		$criteria->compare('noaplica',$this->noaplica);
 		$criteria->compare('idmarca',$this->idmarca);
+                $criteria->with = array('pkmarca');
+                $criteria->addSearchCondition('pkmarca.nommarca', $this->marca, true);
 		$criteria->compare('modelo',$this->modelo,true);
 		$criteria->compare('nserie',$this->nserie,true);
 		$criteria->compare('cantidad',$this->cantidad);
 		$criteria->compare('tipo',$this->tipo,true);
 		$criteria->compare('caracteristica',$this->caracteristica,true);
+                $session=new CHttpSession;
+                            $session->open();
+
+                            $session['reporte_fichas']=$criteria;  //Esto para guardar la criteria en la sesión actual para usarlo posteriormente.
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
