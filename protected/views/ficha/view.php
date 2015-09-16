@@ -30,7 +30,7 @@ $this->menu=array(
 		'ip',
 		'mac',
 		'wireless',
-		'nomusuequi',
+		'idusuario',
 		'nomusured',
 	),
 )); ?>

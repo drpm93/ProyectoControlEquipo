@@ -1,76 +1,35 @@
-<?php
-/* @var $this DireccionesController */
-/* @var $model Direcciones */
-/* @var $form CActiveForm */
-?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'direcciones-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
+	'id'=>'evento-form',
+    'enableAjaxValidation'=>false,
+'enableClientValidation'=>true,
+    'type'=>'horizontal',
+'clientOptions' => array(
+'validateOnSubmit' => true,)
 )); ?>
+<p class="help-block">Los Campos con <span class="required">*</span> son requeridos.</p>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	
+        <?php $datosac = CHtml::listData(Accesos::model()->findAll(),'idacceso','nomacceso'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idacceso',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datosac))); ?>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->checkBoxGroup($model,'messenger'); ?>
+        <?php echo $form->checkBoxGroup($model,'googletalk'); ?>
+	<?php echo $form->checkBoxGroup($model,'correo'); ?>	
+        <?php echo $form->textFieldGroup($model,'adicional',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'terminal'); ?>
-		<?php echo $form->textField($model,'terminal',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'terminal'); ?>
-	</div>
+	
+        <?php $datos1 = CHtml::listData(Ficha::model()->findAll(),'idficha','nficha'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idficha',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos1))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'idusuario'); ?>
-		<?php echo $form->textField($model,'idusuario'); ?>
-		<?php echo $form->error($model,'idusuario'); ?>
-	</div>
+	
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'idacceso'); ?>
-		<?php echo $form->textField($model,'idacceso'); ?>
-		<?php echo $form->error($model,'idacceso'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'messenger'); ?>
-		<?php echo $form->checkBox($model,'messenger'); ?>
-		<?php echo $form->error($model,'messenger'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'googletalk'); ?>
-		<?php echo $form->checkBox($model,'googletalk'); ?>
-		<?php echo $form->error($model,'googletalk'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'correo'); ?>
-		<?php echo $form->checkBox($model,'correo'); ?>
-		<?php echo $form->error($model,'correo'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'adicional'); ?>
-		<?php echo $form->textField($model,'adicional',array('size'=>60,'maxlength'=>250)); ?>
-		<?php echo $form->error($model,'adicional'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'idficha'); ?>
-		<?php echo $form->textField($model,'idficha'); ?>
-		<?php echo $form->error($model,'idficha'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+	<div class="form-actions">
+	<?php $this->widget('booster.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'context'=>'primary',
+			'label'=>$model->isNewRecord ? 'Crear' : 'Guardar',
+		)); ?>
+</div>
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->

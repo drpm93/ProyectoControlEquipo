@@ -1,88 +1,41 @@
-<?php
-/* @var $this CaracteristicasController */
-/* @var $model Caracteristicas */
-/* @var $form CActiveForm */
-?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'caracteristicas-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
+	'id'=>'evento-form',
+    'enableAjaxValidation'=>false,
+'enableClientValidation'=>true,
+    'type'=>'horizontal',
+'clientOptions' => array(
+'validateOnSubmit' => true,)
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<p class="help-block">Los Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'idficha'); ?>
-		<?php echo $form->textField($model,'idficha'); ?>
-		<?php echo $form->error($model,'idficha'); ?>
-	</div>
+	<?php $datos = CHtml::listData(Ficha::model()->findAll(),'idficha','nficha'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idficha',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos))); ?>
+       
+        <?php echo $form->textFieldGroup($model,'descripcion',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+        
+        <?php echo $form->checkBoxGroup($model,'aplica'); ?>
+        <?php echo $form->checkBoxGroup($model,'noaplica'); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'descripcion'); ?>
-		<?php echo $form->textField($model,'descripcion',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'descripcion'); ?>
-	</div>
+	<?php $datosma = CHtml::listData(Marca::model()->findAll(),'idmarca','nommarca'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idmarca',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datosma))); ?>
+       
+	<?php echo $form->textFieldGroup($model,'modelo',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+        <?php echo $form->textFieldGroup($model,'nserie',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+	<?php echo $form->textFieldGroup($model,'cantidad',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+	<?php echo $form->textFieldGroup($model,'tipo',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+	<?php echo $form->textFieldGroup($model,'caracteristica',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'aplica'); ?>
-		<?php echo $form->checkBox($model,'aplica'); ?>
-		<?php echo $form->error($model,'aplica'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'noaplica'); ?>
-		<?php echo $form->checkBox($model,'noaplica'); ?>
-		<?php echo $form->error($model,'noaplica'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'idmarca'); ?>
-		<?php echo $form->textField($model,'idmarca'); ?>
-		<?php echo $form->error($model,'idmarca'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'modelo'); ?>
-		<?php echo $form->textField($model,'modelo',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'modelo'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'nserie'); ?>
-		<?php echo $form->textField($model,'nserie',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'nserie'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'cantidad'); ?>
-		<?php echo $form->textField($model,'cantidad'); ?>
-		<?php echo $form->error($model,'cantidad'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tipo'); ?>
-		<?php echo $form->textField($model,'tipo',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'tipo'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'caracteristica'); ?>
-		<?php echo $form->textField($model,'caracteristica',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'caracteristica'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+	<div class="form-actions">
+	<?php $this->widget('booster.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'context'=>'primary',
+			'label'=>$model->isNewRecord ? 'Crear' : 'Guardar',
+		)); ?>
+</div>
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->

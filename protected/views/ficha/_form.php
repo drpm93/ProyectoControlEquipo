@@ -39,7 +39,8 @@
 	<?php echo $form->textFieldGroup($model,'wireless',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
 
-	<?php echo $form->textFieldGroup($model,'nomusuequi',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+        <?php $datos = CHtml::listData(Usuarios::model()->findAll(),'idusuario','nomusu'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idusuario',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos))); ?>
 
 
 	<?php echo $form->textFieldGroup($model,'nomusured',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>

@@ -62,8 +62,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'nomusuequi'); ?>
-		<?php echo $form->textField($model,'nomusuequi',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->label($model,'idusuario'); ?>
+		<?php echo $form->textField($model,'idusuario',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row">

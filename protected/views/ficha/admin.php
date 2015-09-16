@@ -94,12 +94,18 @@ $date = $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                     'htmlOptions'=>array('style'=>'height:40px;width:200px'),
                     ),
 		'responsable',
+            array(
+                    'name' =>'idusuario',
+                    'value'=>'$data->pkusuario->nomusu',
+                    'filter'=>false,
+                    //'filter'=> CHtml::listData(Actividad::model()->findAll(array('order'=>'nomactividad')), 'idactividad', 'nomactividad'),
+                    'htmlOptions'=>array('style'=>'height:40px;width:200px'),), 
 		/*
 		'antiguedad',
 		'ip',
 		'mac',
 		'wireless',
-		'nomusuequi',
+		
 		'nomusured',
 		*/
 		array(

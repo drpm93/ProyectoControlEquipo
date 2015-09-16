@@ -22,8 +22,6 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'iddireccion',
-		'terminal',
-		'idusuario',
 		'idacceso',
 		'messenger',
 		'googletalk',

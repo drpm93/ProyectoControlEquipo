@@ -9,13 +9,7 @@
 	<?php echo CHtml::link(CHtml::encode($data->iddireccion), array('view', 'id'=>$data->iddireccion)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('terminal')); ?>:</b>
-	<?php echo CHtml::encode($data->terminal); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('idusuario')); ?>:</b>
-	<?php echo CHtml::encode($data->idusuario); ?>
-	<br />
+	
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('idacceso')); ?>:</b>
 	<?php echo CHtml::encode($data->idacceso); ?>

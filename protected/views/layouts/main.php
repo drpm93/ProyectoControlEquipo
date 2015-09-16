@@ -31,7 +31,6 @@ array('label' => 'Inicio', 'url' =>array('/site/index'), ),
 'visible'=>!Yii::app()->user->isGuest,
 'items' => array(
 array('label' => 'Crear ficha de equipo', 'url' => array('/ficha/create')),
-//array('label' => 'Lista de Médicos', 'url' => array('/medico/index')),
 array('label' => 'Lista de fichas', 'url' =>array('/ficha/admin')),
     
  '---',
@@ -42,8 +41,39 @@ array('label' => 'Crear Actividad', 'url' =>array('/actividad/create')),
     '---',
 array('label' => 'Agregar caracteristicas a fichas', 'url' => array('/caracteristicas/create')),
 array('label' => 'Crear marca de equipo', 'url' =>array('/marca/create')),
+    '---',
+    '---',
+array('label' => 'Crear usuario', 'url' => array('/usuarios/create')),
+array('label' => 'Lista de usuarios', 'url' =>array('/usuarios/admin')),
 )
 ),
+    array(
+        'label'=>'Direccionamiento',
+        'url' =>'#',
+        'visible' =>!YII::app()->user->isGuest,
+        'items' => array(
+        array('label'=>'Crear direccionamiento', 'url'=>array('direcciones/create')),
+            array('label' => 'Lista de direcciones', 'url' =>array('/direcciones/admin')),
+            '---',
+            array('label'=>'Crear acceso', 'url'=>array('accesos/create')),
+            
+            
+
+            ),
+        
+    ),
+    array(
+        'label'=>'Reportes',
+        'url' =>'#',
+        'visible' =>!YII::app()->user->isGuest,
+        'items' => array(
+        array('label'=>'Fichas de equipos', 'url'=>array('caracteristicas/admin')),
+            
+            
+
+            ),
+        
+    ),
 ),
 ),
      array(
