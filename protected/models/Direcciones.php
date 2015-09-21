@@ -5,18 +5,14 @@
  *
  * The followings are the available columns in table 'direcciones':
  * @property integer $iddireccion
- * 
- * 
  * @property integer $idacceso
  * @property boolean $messenger
  * @property boolean $googletalk
  * @property boolean $correo
  * @property string $adicional
  * @property integer $idficha
- *
  * The followings are the available model relations:
  * @property Ficha $idficha0
- * 
  * @property Accesos $idacceso0
  */
 class Direcciones extends CActiveRecord
@@ -43,7 +39,7 @@ class Direcciones extends CActiveRecord
                         array('messenger, googletalk, correo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('iddireccion,idacceso, messenger, googletalk, correo, adicional, idficha', 'safe', 'on'=>'search'),
+			array('iddireccion,ficha,idacceso, acceso,messenger, googletalk, correo, adicional, idficha', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,8 +51,8 @@ class Direcciones extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idficha0' => array(self::BELONGS_TO, 'Ficha', 'idficha'),
-			'idacceso0' => array(self::BELONGS_TO, 'Accesos', 'idacceso'),
+			'pkficha' => array(self::BELONGS_TO, 'Ficha', 'idficha'),
+			'pkacceso' => array(self::BELONGS_TO, 'Accesos', 'idacceso'),
 		);
 	}
 
@@ -88,6 +84,8 @@ class Direcciones extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
+        public $ficha,$acceso;
+        
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -96,12 +94,15 @@ class Direcciones extends CActiveRecord
 
 		$criteria->compare('iddireccion',$this->iddireccion);
 		$criteria->compare('idacceso',$this->idacceso);
+                $criteria->with=array('pkacceso');
+                $criteria->AddSearchCondition('pkacceso.nomacceso', $this->acceso, true);
 		$criteria->compare('messenger',$this->messenger);
 		$criteria->compare('googletalk',$this->googletalk);
 		$criteria->compare('correo',$this->correo);
 		$criteria->compare('adicional',$this->adicional,true);
 		$criteria->compare('idficha',$this->idficha);
-
+                $criteria->with = array('pkficha');
+                $criteria->AddSearchCondition('pkficha.ip', $this->ficha, true);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

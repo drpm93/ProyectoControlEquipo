@@ -28,7 +28,7 @@ class DireccionesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','adminequipos'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -139,6 +139,17 @@ class DireccionesController extends Controller
 			$model->attributes=$_GET['Direcciones'];
 
 		$this->render('admin',array(
+			'model'=>$model,
+		));
+	}
+        public function actionAdminEquipos()
+	{
+		$model=new Direcciones('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Direcciones']))
+			$model->attributes=$_GET['Direcciones'];
+
+		$this->render('adminequipos',array(
 			'model'=>$model,
 		));
 	}

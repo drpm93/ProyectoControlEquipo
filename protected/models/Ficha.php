@@ -42,7 +42,7 @@ class Ficha extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nficha, idarea, idactividad, fecha, antiguedad, ip, mac, wireless', 'required'),
+			array('nficha, idarea, idactividad, idusuario,fecha, antiguedad, ip, mac, wireless', 'required'),
 			array('idarea, idusuario, idactividad', 'numerical', 'integerOnly'=>true),
 			array('nficha', 'length', 'max'=>5),
 			array('responsable', 'length', 'max'=>60),

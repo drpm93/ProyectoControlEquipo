@@ -7,10 +7,7 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Direcciones', 'url'=>array('index')),
-	array('label'=>'Create Direcciones', 'url'=>array('create')),
-);
+
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -26,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Direcciones</h1>
+<h1>EQUIPOS</h1>
 
 
 <?php $this->widget('booster.widgets.TbGridView', array(
@@ -40,14 +37,24 @@ $('.search-form form').submit(function(){
                     'value'=>'$data->pkficha->ip',
                     'filter'=>false,
                     'htmlOptions'=>array('style'=>'height:40px;width:200px'),),
+                array(
+                    'name' =>'MAC',
+                    'value'=>'$data->pkficha->mac',
+                    'filter'=>false,
+                    'htmlOptions'=>array('style'=>'height:40px;width:8000px'),),
 		array(
                     'name' =>'TERMINAL',
-                    'value'=>'$data->pkficha->pkdepartamento->nomdepar',
+                    'value'=>'$data->pkficha->responsable',
                     'filter'=>false,
                     'htmlOptions'=>array('style'=>'height:40px;width:200px'),),
                 array(
                     'name' =>'USUARIO',
                     'value'=>'$data->pkficha->pkusuario->nomusu',
+                    'filter'=>false,
+                    'htmlOptions'=>array('style'=>'height:40px;width:200px'),),
+                array(
+                    'name' =>'DEPARTAMENTO',
+                    'value'=>'$data->pkficha->pkdepartamento->nomdepar',
                     'filter'=>false,
                     'htmlOptions'=>array('style'=>'height:40px;width:200px'),),
                 array(
