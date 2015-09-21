@@ -15,7 +15,7 @@
  * @property integer $cantidad
  * @property string $tipo
  * @property string $caracteristica
- *
+ * @property integer $idelemento
  * The followings are the available model relations:
  * @property Ficha $idficha0
  * @property Marca $idmarca0

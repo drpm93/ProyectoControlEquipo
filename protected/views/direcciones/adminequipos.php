@@ -41,7 +41,7 @@ $('.search-form form').submit(function(){
                     'name' =>'MAC',
                     'value'=>'$data->pkficha->mac',
                     'filter'=>false,
-                    'htmlOptions'=>array('style'=>'height:40px;width:8000px'),),
+                    'htmlOptions'=>array('style'=>'height:40px;width:200px'),),
 		array(
                     'name' =>'TERMINAL',
                     'value'=>'$data->pkficha->responsable',
@@ -55,33 +55,6 @@ $('.search-form form').submit(function(){
                 array(
                     'name' =>'DEPARTAMENTO',
                     'value'=>'$data->pkficha->pkdepartamento->nomdepar',
-                    'filter'=>false,
-                    'htmlOptions'=>array('style'=>'height:40px;width:200px'),),
-                array(
-                    'name' =>'ACCESO',
-                    'value'=>'$data->pkacceso->nomacceso',
-                    'filter'=>false,
-                    'htmlOptions'=>array('style'=>'height:40px;width:200px'),),
-		array('name'=> 'messenger',
-                'value'=> '$data->messenger ? "Si": "No";',
-                    'sortable'=>false,
-                    'filter' =>false
-                ),
-                array('name'=> 'googletalk',
-                'value'=> '$data->googletalk ? "Si": "No";',
-                    'sortable'=>false,
-                    'filter' =>false
-                ),
-		array('name'=> 'correo',
-                'value'=> '$data->correo ? "Si": "No";',
-                //'filter'=> array(1=>'si',0=>'no'),
-                    'sortable'=>false,
-                    'filter' =>false
-                ),
-		
-		array(
-                    'name' =>'adicional',
-                    'value'=>'$data->adicional',
                     'filter'=>false,
                     'htmlOptions'=>array('style'=>'height:40px;width:200px'),),
 		

@@ -63,7 +63,7 @@
     $ip = $datof->pkficha->ip;
     $mac = $datof->pkficha->mac;
     $wireless = $datof->pkficha->wireless;
-    $usuequi = $datof->pkficha->nomusuequi;
+    $usuequi = $datof->pkficha->pkusuario->nomusu;
     $usured = $datof->pkficha->nomusured;
     ?>
 <?php endforeach; ?>

@@ -87,7 +87,7 @@ return array(
 		// database settings are configured in database.php
 		'db'=>array(
 	    'connectionString' => 'pgsql:host=localhost'
-                    . ';dbname=gondi',
+                    . ';dbname=ControlEquipos',
 			'emulatePrepare' => true,
 			'username' => 'postgres',
 			'password' => 'postgres',

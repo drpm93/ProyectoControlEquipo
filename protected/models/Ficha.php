@@ -16,13 +16,14 @@
  * @property string $wireless
  * @property string $nomusured
  * @property string $ubicacion
- * @property string $idusuario
+ * @property integer $idusuario
  * The followings are the available model relations:
  * @property Direcciones[] $direcciones
  * @property Caracteristicas[] $caracteristicases
  * @property Departamento $idarea0
  * @property Actividad $idactividad0
  * @property Usuarios $idusuario0
+ * @property Elementos $idelemento0
  */
 class Ficha extends CActiveRecord
 {
@@ -43,7 +44,7 @@ class Ficha extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nficha, idarea, idactividad, idusuario,fecha, antiguedad, ip, mac, wireless', 'required'),
-			array('idarea, idusuario, idactividad', 'numerical', 'integerOnly'=>true),
+			array('idarea, idusuario,idactividad', 'numerical', 'integerOnly'=>true),
 			array('nficha', 'length', 'max'=>5),
 			array('responsable', 'length', 'max'=>60),
 			array('antiguedad', 'length', 'max'=>40),
@@ -52,7 +53,7 @@ class Ficha extends CActiveRecord
 			array('mac, wireless, nomusured', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idficha, nficha, usuario,idarea, idusuario, fecha1,idactividad, fecha, ubicacion,departamento,actividad,responsable, antiguedad, ip, mac, wireless,  nomusured', 'safe', 'on'=>'search'),
+			array('idficha, nficha, usuario,idarea, idusuario,fecha1,idactividad, fecha, ubicacion,departamento,actividad,responsable, antiguedad, ip, mac, wireless,  nomusured', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +70,7 @@ class Ficha extends CActiveRecord
 			'pkdepartamento' => array(self::BELONGS_TO, 'Departamento', 'idarea'),
 			'pkactividad' => array(self::BELONGS_TO, 'Actividad', 'idactividad'),
                         'pkusuario' => array(self::BELONGS_TO, 'Usuarios', 'idusuario'),
+                        'pkelemento' => arra(self::BELONGS_TO, 'Elementos','idelemento'),
 		);
 	}
 
@@ -91,6 +93,7 @@ class Ficha extends CActiveRecord
 			'idusuario'=>'NOMBRE USUARIO EQUIPO',
 			'nomusured' => 'NOMBRE USUARIO RED',
                         'ubicacion' => 'Ubicacíon del equipo',
+                        'idelemento' => 'ELEMENTO',
 		);
 	}
 
@@ -110,6 +113,7 @@ class Ficha extends CActiveRecord
         public $actividad;
         public $fecha1;
         public $usuario;
+        public $elemento;
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -135,7 +139,8 @@ class Ficha extends CActiveRecord
 		$criteria->compare('idusuario',$this->idusuario,true);
                 $criteria->with = array('pkusuario');
                 $criteria->AddSearchCondition('pkusuario.nomusu', $this->usuario, true);
-		
+		$criteria->with = array('pkelemento');
+                $criteria->AddSearchCondition('pkelemento.nomele', $this->elemento, true);
 		$criteria->compare('nomusured',$this->nomusured,true);
                 $criteria->compare('ubicacion',$this->ubicacion,true);
                 //se guarda la busqueda en una sesion 
