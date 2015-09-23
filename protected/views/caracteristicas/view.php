@@ -23,7 +23,7 @@ $this->menu=array(
 	'attributes'=>array(
 		'idcaracteristica',
 		'idficha',
-		'descripcion',
+		
 		'aplica',
 		'noaplica',
 		'idmarca',

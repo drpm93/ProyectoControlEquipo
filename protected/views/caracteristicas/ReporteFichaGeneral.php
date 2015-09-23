@@ -97,7 +97,7 @@
  <?php foreach($model as $row): ?>
  <tr>
  <td align="center">
- <?php echo $row->descripcion; ?>
+ <?php echo $row->pkelemento->nomele; ?>
  </td>
  <td align="center">
  <?php 

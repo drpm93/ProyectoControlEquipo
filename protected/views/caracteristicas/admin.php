@@ -31,7 +31,7 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'idcaracteristica',
 		'idficha',
-		'descripcion',
+		
 		'aplica',
 		'noaplica',
 		'idmarca',

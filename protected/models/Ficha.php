@@ -23,7 +23,6 @@
  * @property Departamento $idarea0
  * @property Actividad $idactividad0
  * @property Usuarios $idusuario0
- * @property Elementos $idelemento0
  */
 class Ficha extends CActiveRecord
 {
@@ -70,7 +69,7 @@ class Ficha extends CActiveRecord
 			'pkdepartamento' => array(self::BELONGS_TO, 'Departamento', 'idarea'),
 			'pkactividad' => array(self::BELONGS_TO, 'Actividad', 'idactividad'),
                         'pkusuario' => array(self::BELONGS_TO, 'Usuarios', 'idusuario'),
-                        'pkelemento' => arra(self::BELONGS_TO, 'Elementos','idelemento'),
+                        
 		);
 	}
 
@@ -93,7 +92,7 @@ class Ficha extends CActiveRecord
 			'idusuario'=>'NOMBRE USUARIO EQUIPO',
 			'nomusured' => 'NOMBRE USUARIO RED',
                         'ubicacion' => 'Ubicacíon del equipo',
-                        'idelemento' => 'ELEMENTO',
+                        
 		);
 	}
 
@@ -113,7 +112,7 @@ class Ficha extends CActiveRecord
         public $actividad;
         public $fecha1;
         public $usuario;
-        public $elemento;
+       
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -139,8 +138,7 @@ class Ficha extends CActiveRecord
 		$criteria->compare('idusuario',$this->idusuario,true);
                 $criteria->with = array('pkusuario');
                 $criteria->AddSearchCondition('pkusuario.nomusu', $this->usuario, true);
-		$criteria->with = array('pkelemento');
-                $criteria->AddSearchCondition('pkelemento.nomele', $this->elemento, true);
+		
 		$criteria->compare('nomusured',$this->nomusured,true);
                 $criteria->compare('ubicacion',$this->ubicacion,true);
                 //se guarda la busqueda en una sesion 

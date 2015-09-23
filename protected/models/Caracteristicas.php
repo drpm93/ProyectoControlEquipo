@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'caracteristicas':
  * @property integer $idcaracteristica
  * @property integer $idficha
- * @property string $descripcion
+ * 
  * @property boolean $aplica
  * @property boolean $noaplica
  * @property integer $idmarca
@@ -19,6 +19,7 @@
  * The followings are the available model relations:
  * @property Ficha $idficha0
  * @property Marca $idmarca0
+ * @property Elementos $idelemento0
  */
 class Caracteristicas extends CActiveRecord
 {
@@ -38,15 +39,15 @@ class Caracteristicas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idficha, descripcion, cantidad', 'required'),
-			array('idficha, idmarca, cantidad', 'numerical', 'integerOnly'=>true),
-			array('descripcion', 'length', 'max'=>50),
+			array('idficha,cantidad,idelemento', 'required'),
+			array('idficha, idmarca, cantidad,idelemento', 'numerical', 'integerOnly'=>true),
+			
 			array('modelo, nserie, tipo', 'length', 'max'=>40),
 			array('caracteristica', 'length', 'max'=>100),
 			array('aplica, noaplica', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idcaracteristica,marca,ficha,idficha, descripcion, aplica, noaplica, idmarca, modelo, nserie, cantidad, tipo, caracteristica', 'safe', 'on'=>'search'),
+			array('idcaracteristica,marca,idelemento,elemento,ficha,idficha, aplica, noaplica, idmarca, modelo, nserie, cantidad, tipo, caracteristica', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,6 +61,7 @@ class Caracteristicas extends CActiveRecord
 		return array(
 			'pkficha' => array(self::BELONGS_TO, 'Ficha', 'idficha'),
 			'pkmarca' => array(self::BELONGS_TO, 'Marca', 'idmarca'),
+                        'pkelemento' => array(self::BELONGS_TO, 'Elementos', 'idelemento'),
 		);
 	}
 
@@ -71,7 +73,7 @@ class Caracteristicas extends CActiveRecord
 		return array(
 			'idcaracteristica' => 'Idcaracteristica',
 			'idficha' => 'Número de ficha',
-			'descripcion' => 'Descripción del elemento',
+			
 			'aplica' => 'Aplica',
 			'noaplica' => 'No aplica',
 			'idmarca' => 'Marca',
@@ -80,6 +82,7 @@ class Caracteristicas extends CActiveRecord
 			'cantidad' => 'Cantidad',
 			'tipo' => 'Tipo',
 			'caracteristica' => 'Característica',
+                        'idelemento' => 'Descripción de elemento',
 		);
 	}
 
@@ -95,7 +98,7 @@ class Caracteristicas extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-        public $ficha,$marca;
+        public $ficha,$marca,$elemento;
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -106,7 +109,7 @@ class Caracteristicas extends CActiveRecord
 		$criteria->compare('idficha',$this->idficha);
                 $criteria->with= array('pkficha');
                 $criteria->addSearchCondition('pkficha.nficha', $this->ficha, true);
-		$criteria->compare('descripcion',$this->descripcion,true);
+		
 		$criteria->compare('aplica',$this->aplica);
 		$criteria->compare('noaplica',$this->noaplica);
 		$criteria->compare('idmarca',$this->idmarca);
@@ -116,6 +119,9 @@ class Caracteristicas extends CActiveRecord
 		$criteria->compare('nserie',$this->nserie,true);
 		$criteria->compare('cantidad',$this->cantidad);
 		$criteria->compare('tipo',$this->tipo,true);
+                $criteria->compare('idelemento',$this->idmarca);
+                $criteria->with = array('pkelemento');
+                $criteria->addSearchCondition('pkelemento.nomele', $this->elemento, true);
 		$criteria->compare('caracteristica',$this->caracteristica,true);
                 $session=new CHttpSession;
                             $session->open();

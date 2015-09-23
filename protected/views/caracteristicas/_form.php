@@ -13,8 +13,9 @@
 	<?php $datos = CHtml::listData(Ficha::model()->findAll(),'idficha','nficha'); ?>
 	<?php echo $form->dropDownListGroup($model, 'idficha',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos))); ?>
        
-        <?php echo $form->textFieldGroup($model,'descripcion',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
-        
+        <?php $datosele = CHtml::listData(Elementos::model()->findAll(),'idelemento','nomele'); ?>
+	<?php echo $form->dropDownListGroup($model, 'idelemento',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datosele))); ?>
+       
         <?php echo $form->checkBoxGroup($model,'aplica'); ?>
         <?php echo $form->checkBoxGroup($model,'noaplica'); ?>
 

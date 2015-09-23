@@ -21,10 +21,7 @@
 		<?php echo $form->textField($model,'idficha'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'descripcion'); ?>
-		<?php echo $form->textField($model,'descripcion',array('size'=>50,'maxlength'=>50)); ?>
-	</div>
+	
 
 	<div class="row">
 		<?php echo $form->label($model,'aplica'); ?>

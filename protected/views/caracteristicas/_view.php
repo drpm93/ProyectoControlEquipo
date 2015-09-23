@@ -13,9 +13,7 @@
 	<?php echo CHtml::encode($data->idficha); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('descripcion')); ?>:</b>
-	<?php echo CHtml::encode($data->descripcion); ?>
-	<br />
+
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('aplica')); ?>:</b>
 	<?php echo CHtml::encode($data->aplica); ?>
