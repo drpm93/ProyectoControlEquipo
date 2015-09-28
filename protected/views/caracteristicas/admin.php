@@ -29,12 +29,33 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'idcaracteristica',
-		'idficha',
 		
-		'aplica',
-		'noaplica',
-		'idmarca',
+		array(
+                    'name' =>'idficha',
+                    'value'=>'$data->pkficha->nficha',
+                    'filter'=>CHtml::activeTextField($model,'ficha',array('class'=>'form-control')),
+                    'htmlOptions'=>array('style'=>'height:40px;width:150px'),),     
+		
+		
+		/*array('name'=> 'aplica',
+                'value'=> '$data->aplica ? "X": "";',
+                    'sortable'=>false,
+                    'filter' =>false,
+                    'htmlOptions'=>array('style'=>'height:40px;width:100px'),
+                ),*/
+            'caracteristica',
+                array(
+                    'name' =>'idelemento',
+                    'value'=>'$data->pkelemento->nomele',
+                    'filter'=>false,
+                    'htmlOptions'=>array('style'=>'height:40px;width:200px'),), 
+		
+		
+		array(
+                    'name' =>'idmarca',
+                    'value'=>'$data->pkmarca->nommarca',
+                    'filter'=>false,
+                    'htmlOptions'=>array('style'=>'height:40px;width:200px'),), 
 		/*
 		'modelo',
 		'nserie',

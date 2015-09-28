@@ -32,7 +32,7 @@ class CaracteristicasController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','generarpdf','reporteficha'),
+				'actions'=>array('create','update','generarpdf','reporteficha','create_nuevo'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -79,6 +79,24 @@ class CaracteristicasController extends Controller
 		));
 	}
 
+        public function actionCreate_Nuevo()
+	{
+		$model=new Caracteristicas;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Caracteristicas']))
+		{
+			$model->attributes=$_POST['Caracteristicas'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->idcaracteristica));
+		}
+
+		$this->render('create_nuevo',array(
+			'model'=>$model,
+		));
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

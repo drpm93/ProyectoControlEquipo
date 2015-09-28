@@ -34,7 +34,7 @@
  <htmlpageheader name="myheader">
  <table width="100%"><tr>
  <td width="50%"  style="color:#0000BB;"><span style="font-weight: bold; font-size: 14pt;">GONDI S.A</span><br />Manta-Ecuador<br /><span style="font-size: 15pt;">&#9742;</span> falta</td>
-<td width='50%' align='right' rowspan='3'><img src='images/gondisa.gif' width='188px' height='165px'></td>
+<td width='25%' align='right' rowspan='3'><img src='images/gondisa.gif' width='100px' height='100px'></td>
  </tr></table>
  </htmlpageheader>
  
@@ -49,8 +49,7 @@
  <sethtmlpagefooter name="myfooter" value="on" />
  mpdf-->
 <div style="text-align: center"><b>Ficha de regitro de equipo de computo </b> </div>
-<br>
-<br>
+
 <div style="text-align: right"><b>Fecha: </b><?php echo date("d/m/Y"); ?> </div>
 <?php foreach($model as $datof): 
     $nficha = $datof->pkficha->nficha;

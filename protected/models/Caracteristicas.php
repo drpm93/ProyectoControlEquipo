@@ -107,20 +107,20 @@ class Caracteristicas extends CActiveRecord
 
 		$criteria->compare('idcaracteristica',$this->idcaracteristica);
 		$criteria->compare('idficha',$this->idficha);
-                $criteria->with= array('pkficha');
-                $criteria->addSearchCondition('pkficha.nficha', $this->ficha, true);
+                $criteria->with = array('pkficha','pkmarca','pkelemento');
+                $criteria->addSearchCondition('pkficha.nficha', $this->ficha,true);
 		
 		$criteria->compare('aplica',$this->aplica);
 		$criteria->compare('noaplica',$this->noaplica);
 		$criteria->compare('idmarca',$this->idmarca);
-                $criteria->with = array('pkmarca');
+                
                 $criteria->addSearchCondition('pkmarca.nommarca', $this->marca, true);
 		$criteria->compare('modelo',$this->modelo,true);
 		$criteria->compare('nserie',$this->nserie,true);
 		$criteria->compare('cantidad',$this->cantidad);
 		$criteria->compare('tipo',$this->tipo,true);
                 $criteria->compare('idelemento',$this->idmarca);
-                $criteria->with = array('pkelemento');
+                
                 $criteria->addSearchCondition('pkelemento.nomele', $this->elemento, true);
 		$criteria->compare('caracteristica',$this->caracteristica,true);
                 $session=new CHttpSession;

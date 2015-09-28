@@ -8,11 +8,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Caracteristicas', 'url'=>array('index')),
-	array('label'=>'Create Caracteristicas', 'url'=>array('create')),
-	array('label'=>'Update Caracteristicas', 'url'=>array('update', 'id'=>$model->idcaracteristica)),
-	array('label'=>'Delete Caracteristicas', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idcaracteristica),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Caracteristicas', 'url'=>array('admin')),
+	
+	array('label'=>'Crear caracteristica a nueva ficha', 'url'=>array('create')),
+        array('label'=>'Lista de caracteristicas', 'url'=>array('admin')),
 );
 ?>
 
@@ -34,3 +32,6 @@ $this->menu=array(
 		'caracteristica',
 	),
 )); ?>
+
+<?php echo CHtml::link(CHtml::image(Yii::app()->baseUrl."/images/nuevo.jpg","Agregar a la misma ficha",array("title"=>"Agregar a la misma ficha")),array("create_nuevo")); ?>
+
