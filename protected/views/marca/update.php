@@ -9,13 +9,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Marca', 'url'=>array('index')),
-	array('label'=>'Create Marca', 'url'=>array('create')),
-	array('label'=>'View Marca', 'url'=>array('view', 'id'=>$model->idmarca)),
-	array('label'=>'Manage Marca', 'url'=>array('admin')),
+	
+	array('label'=>'Crear marca', 'url'=>array('create')),
+	array('label'=>'Ver marca', 'url'=>array('view', 'id'=>$model->idmarca)),
+	array('label'=>'Administrar marcas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Marca <?php echo $model->idmarca; ?></h1>
+<h1>Actualizar marca #<?php echo $model->idmarca; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

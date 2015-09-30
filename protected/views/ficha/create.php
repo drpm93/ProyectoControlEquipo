@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Ficha', 'url'=>array('index')),
-	array('label'=>'Manage Ficha', 'url'=>array('admin')),
+	
+	array('label'=>'Administrar fichas', 'url'=>array('admin')),
 );
 ?>
 

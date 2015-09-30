@@ -54,8 +54,8 @@ class Departamento extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'iddepartamento' => 'Iddepartamento',
-			'nomdepar' => 'Nomdepar',
+			'iddepartamento' => 'ID DEPARTAMENTO',
+			'nomdepar' => 'NOMBRE DEL DEPARTAMENTO',
 		);
 	}
 

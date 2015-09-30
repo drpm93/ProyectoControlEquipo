@@ -9,13 +9,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Direcciones', 'url'=>array('index')),
-	array('label'=>'Create Direcciones', 'url'=>array('create')),
-	array('label'=>'View Direcciones', 'url'=>array('view', 'id'=>$model->iddireccion)),
-	array('label'=>'Manage Direcciones', 'url'=>array('admin')),
+	
+	array('label'=>'Crear dirección', 'url'=>array('create')),
+	array('label'=>'Ver dirección', 'url'=>array('view', 'id'=>$model->iddireccion)),
+	array('label'=>'Administrar direcciones', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Direcciones <?php echo $model->iddireccion; ?></h1>
+<h1>Actualizar dirección # <?php echo $model->iddireccion; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

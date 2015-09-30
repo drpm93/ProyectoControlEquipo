@@ -1,33 +1,27 @@
-<?php
-/* @var $this ElementosController */
-/* @var $model Elementos */
-/* @var $form CActiveForm */
-?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'elementos-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
+	'id'=>'evento-form',
+    'enableAjaxValidation'=>false,
+'enableClientValidation'=>true,
+    'type'=>'horizontal',
+'clientOptions' => array(
+'validateOnSubmit' => true,)
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<p class="help-block">Los Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'nomele'); ?>
-		<?php echo $form->textField($model,'nomele',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'nomele'); ?>
-	</div>
+	<?php echo $form->textFieldGroup($model,'nomele',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+
+	<div class="form-actions">
+	<?php $this->widget('booster.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'context'=>'primary',
+			'label'=>$model->isNewRecord ? 'Crear' : 'Guardar',
+		)); ?>
+</div>
+
 
 <?php $this->endWidget(); ?>
 

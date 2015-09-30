@@ -9,13 +9,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Elementos', 'url'=>array('index')),
-	array('label'=>'Create Elementos', 'url'=>array('create')),
-	array('label'=>'View Elementos', 'url'=>array('view', 'id'=>$model->idelemento)),
-	array('label'=>'Manage Elementos', 'url'=>array('admin')),
+	
+	array('label'=>'Crear elemento', 'url'=>array('create')),
+	array('label'=>'Vista de elemento', 'url'=>array('view', 'id'=>$model->idelemento)),
+	array('label'=>'Administrar elementos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Elementos <?php echo $model->idelemento; ?></h1>
+<h1>MODIFICACIÓN DE ELEMENTO # <?php echo $model->idelemento; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

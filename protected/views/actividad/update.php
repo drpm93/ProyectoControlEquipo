@@ -9,13 +9,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Actividad', 'url'=>array('index')),
-	array('label'=>'Create Actividad', 'url'=>array('create')),
-	array('label'=>'View Actividad', 'url'=>array('view', 'id'=>$model->idactividad)),
-	array('label'=>'Manage Actividad', 'url'=>array('admin')),
+	
+	array('label'=>'Crear actividad', 'url'=>array('create')),
+	array('label'=>'Vista de actividad', 'url'=>array('view', 'id'=>$model->idactividad)),
+	array('label'=>'Administrar actividades', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Actividad <?php echo $model->idactividad; ?></h1>
+<h1>Actualizar actividad #<?php echo $model->idactividad; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

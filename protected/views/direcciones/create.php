@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Direcciones', 'url'=>array('index')),
-	array('label'=>'Manage Direcciones', 'url'=>array('admin')),
+	
+	array('label'=>'Administrar direcciones', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Direcciones</h1>
+<h1>Crear direcciones</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

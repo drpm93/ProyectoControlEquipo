@@ -8,10 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	
+	array('label'=>'Administrar caracteristicas', 'url'=>'admin')
 );
 ?>
 
-<h1>Create Caracteristicas</h1>
+<h1>Crear caracteristica</h1>
 
 <?php $this->renderPartial('_form_nuevo', array('model'=>$model)); ?>

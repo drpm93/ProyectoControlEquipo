@@ -54,7 +54,7 @@ class Elementos extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idelemento' => 'Id elemento',
+			'idelemento' => 'ID DEL ELEMENTO',
 			'nomele' => 'DESCRIPCIÓN DE ELEMENTO',
 		);
 	}

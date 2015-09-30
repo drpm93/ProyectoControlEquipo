@@ -54,8 +54,8 @@ class Marca extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idmarca' => 'Idmarca',
-			'nommarca' => 'Nommarca',
+			'idmarca' => 'ID DE MARCA',
+			'nommarca' => 'NOMBRE DE MARCA',
 		);
 	}
 

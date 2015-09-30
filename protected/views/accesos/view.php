@@ -8,17 +8,17 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Accesos', 'url'=>array('index')),
-	array('label'=>'Create Accesos', 'url'=>array('create')),
-	array('label'=>'Update Accesos', 'url'=>array('update', 'id'=>$model->idacceso)),
-	array('label'=>'Delete Accesos', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idacceso),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Accesos', 'url'=>array('admin')),
+	
+	array('label'=>'Crear acceso', 'url'=>array('create')),
+	array('label'=>'Actualizar acceso', 'url'=>array('update', 'id'=>$model->idacceso)),
+	array('label'=>'Eliminar acceso', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idacceso),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar accesos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Accesos #<?php echo $model->idacceso; ?></h1>
+<h1>Vista de acceso #<?php echo $model->idacceso; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'idacceso',

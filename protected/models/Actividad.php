@@ -54,8 +54,8 @@ class Actividad extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idactividad' => 'Idactividad',
-			'nomactividad' => 'Nomactividad',
+			'idactividad' => 'ID DE ACTIVIDAD',
+			'nomactividad' => 'NOMBRE DE ACTIVIDAD',
 		);
 	}
 

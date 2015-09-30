@@ -8,17 +8,17 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Actividad', 'url'=>array('index')),
-	array('label'=>'Create Actividad', 'url'=>array('create')),
-	array('label'=>'Update Actividad', 'url'=>array('update', 'id'=>$model->idactividad)),
-	array('label'=>'Delete Actividad', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idactividad),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Actividad', 'url'=>array('admin')),
+	
+	array('label'=>'Crear actividad', 'url'=>array('create')),
+	array('label'=>'Actualizar actividad', 'url'=>array('update', 'id'=>$model->idactividad)),
+	array('label'=>'Eliminar actividad', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idactividad),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar actividades', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Actividad #<?php echo $model->idactividad; ?></h1>
+<h1>Vista de actividad #<?php echo $model->idactividad; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'idactividad',

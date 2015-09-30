@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Caracteristicas', 'url'=>array('index')),
-	array('label'=>'Create Caracteristicas', 'url'=>array('create')),
-	array('label'=>'View Caracteristicas', 'url'=>array('view', 'id'=>$model->idcaracteristica)),
-	array('label'=>'Manage Caracteristicas', 'url'=>array('admin')),
+	
+	array('label'=>'Crear caracteristica', 'url'=>array('create')),
+	array('label'=>'Ver Caracteristica', 'url'=>array('view', 'id'=>$model->idcaracteristica)),
+	array('label'=>'Administrar caracteristicas', 'url'=>array('admin')),
 );
 ?>
 

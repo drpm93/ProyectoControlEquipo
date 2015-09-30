@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Accesos', 'url'=>array('index')),
-	array('label'=>'Manage Accesos', 'url'=>array('admin')),
+	
+	array('label'=>'Administrar accesos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Accesos</h1>
+<h1>Crear acceso</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

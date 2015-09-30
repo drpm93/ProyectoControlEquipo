@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Actividad', 'url'=>array('index')),
-	array('label'=>'Manage Actividad', 'url'=>array('admin')),
+	
+	array('label'=>'Administrar actividades', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Actividad</h1>
+<h1>Crear actividad</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

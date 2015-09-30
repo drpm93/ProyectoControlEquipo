@@ -4,15 +4,15 @@
 
 $this->breadcrumbs=array(
 	'Elementoses'=>array('index'),
-	'Create',
+	'Crear elemento',
 );
 
 $this->menu=array(
-	array('label'=>'List Elementos', 'url'=>array('index')),
-	array('label'=>'Manage Elementos', 'url'=>array('admin')),
+	
+	array('label'=>'Administrar elementos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Elementos</h1>
+<h1>Crear elemento</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

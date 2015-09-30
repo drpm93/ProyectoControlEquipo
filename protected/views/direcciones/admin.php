@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Direcciones', 'url'=>array('index')),
-	array('label'=>'Create Direcciones', 'url'=>array('create')),
+	
+	array('label'=>'Crear Dirección', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Direcciones</h1>
+<h1>Lista de direcciones</h1>
 
 
 <?php $this->widget('booster.widgets.TbGridView', array(

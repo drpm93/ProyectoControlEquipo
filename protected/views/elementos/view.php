@@ -8,20 +8,21 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Elementos', 'url'=>array('index')),
-	array('label'=>'Create Elementos', 'url'=>array('create')),
-	array('label'=>'Update Elementos', 'url'=>array('update', 'id'=>$model->idelemento)),
-	array('label'=>'Delete Elementos', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idelemento),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Elementos', 'url'=>array('admin')),
+	
+	array('label'=>'Crear elemento', 'url'=>array('create')),
+	array('label'=>'Actualizar elemento', 'url'=>array('update', 'id'=>$model->idelemento)),
+	array('label'=>'Eliminar elemento', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idelemento),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar elementos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Elementos #<?php echo $model->idelemento; ?></h1>
+<h1>VISTA DE ELEMENTO #<?php echo $model->idelemento; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'idelemento',
 		'nomele',
+		
 	),
 )); ?>

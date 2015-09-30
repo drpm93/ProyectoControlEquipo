@@ -9,13 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Fichas', 'url'=>array('index')),
 	array('label'=>'Crear Ficha', 'url'=>array('create')),
 	array('label'=>'Ver Ficha', 'url'=>array('view', 'id'=>$model->idficha)),
-	array('label'=>'Administración de fichas', 'url'=>array('admin')),
+	array('label'=>'Administrar fichas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Modificación de Ficha #<?php echo $model->nficha; ?></h1>
+<h1>Actualizar Ficha #<?php echo $model->nficha; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

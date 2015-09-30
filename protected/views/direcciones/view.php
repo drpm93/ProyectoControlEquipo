@@ -8,17 +8,17 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Direcciones', 'url'=>array('index')),
-	array('label'=>'Create Direcciones', 'url'=>array('create')),
-	array('label'=>'Update Direcciones', 'url'=>array('update', 'id'=>$model->iddireccion)),
-	array('label'=>'Delete Direcciones', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->iddireccion),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Direcciones', 'url'=>array('admin')),
+	
+	array('label'=>'Crear dirección', 'url'=>array('create')),
+	array('label'=>'Actualizar dirección', 'url'=>array('update', 'id'=>$model->iddireccion)),
+	array('label'=>'Eliminar dirección', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->iddireccion),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar direcciones', 'url'=>array('admin')),
 );
 ?>
 
 <h1>View Direcciones #<?php echo $model->iddireccion; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'iddireccion',

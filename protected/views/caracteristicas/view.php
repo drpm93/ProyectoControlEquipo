@@ -10,13 +10,13 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	
 	array('label'=>'Crear caracteristica a nueva ficha', 'url'=>array('create')),
-        array('label'=>'Lista de caracteristicas', 'url'=>array('admin')),
+        array('label'=>'Administrar caracteristicas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Caracteristicas #<?php echo $model->idcaracteristica; ?></h1>
+<h1>Vista de caracteristica #<?php echo $model->idcaracteristica; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'idcaracteristica',

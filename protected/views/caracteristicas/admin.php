@@ -43,7 +43,12 @@ $('.search-form form').submit(function(){
                     'filter' =>false,
                     'htmlOptions'=>array('style'=>'height:40px;width:100px'),
                 ),*/
-            'caracteristica',
+                array(
+                    'name' =>'caracteristica',
+                    'value'=>'$data->caracteristica',
+                    'filter'=>false,
+                    'htmlOptions'=>array('style'=>'height:40px;width:150px'),),     
+		
                 array(
                     'name' =>'idelemento',
                     'value'=>'$data->pkelemento->nomele',

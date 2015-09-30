@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de fichas', 'url'=>array('index')),
+	
 	array('label'=>'Crear ficha', 'url'=>array('create')),
 	array('label'=>'Actualizar ficha', 'url'=>array('update', 'id'=>$model->idficha)),
 	array('label'=>'Eliminar ficha', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idficha),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrción de fichas', 'url'=>array('admin')),
+	array('label'=>'Administrar fichas', 'url'=>array('admin')),
 );
 ?>
 

@@ -54,8 +54,8 @@ class Accesos extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idacceso' => 'Idacceso',
-			'nomacceso' => 'Nomacceso',
+			'idacceso' => 'ID DE ACCESO',
+			'nomacceso' => 'NOMBRE DE ACCESO',
 		);
 	}
 

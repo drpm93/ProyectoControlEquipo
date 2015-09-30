@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Marca', 'url'=>array('index')),
-	array('label'=>'Manage Marca', 'url'=>array('admin')),
+	
+	array('label'=>'Administrar marcas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Marca</h1>
+<h1>Crear marca</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
