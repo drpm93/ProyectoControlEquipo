@@ -20,18 +20,27 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'idcaracteristica',
-		'idficha',
 		
+		array(
+                    'name' =>'idficha',
+                    'value'=>$model->pkficha->nficha),
+                array(
+                    'name' =>'idelemento',
+                    'value'=>$model->pkelemento->nomele),
 		'aplica',
 		'noaplica',
-		'idmarca',
+		array(
+                    'name' =>'idmarca',
+                    'value'=>$model->pkmarca->nommarca),
 		'modelo',
 		'nserie',
 		'cantidad',
 		'tipo',
 		'caracteristica',
 	),
-)); ?>
+)); 
+?>
 
-<?php echo CHtml::link(CHtml::image(Yii::app()->baseUrl."/images/nuevo.jpg","Agregar a la misma ficha",array("title"=>"Agregar a la misma ficha")),array("create_nuevo")); ?>
+<?php 
+echo CHtml::link(CHtml::image(Yii::app()->baseUrl."/images/nuevo.jpg","Agregar a la misma ficha",array("title"=>"Agregar a la misma ficha")),array('create_nuevo','id'=>$model->idficha)); ?>
 

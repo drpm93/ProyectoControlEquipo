@@ -18,7 +18,7 @@
         <?php echo $form->textFieldGroup($model,'adicional',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
 	
-        <?php $datos1 = CHtml::listData(Ficha::model()->findAll(),'idficha','nficha'); ?>
+        <?php $datos1 = CHtml::listData(Ficha::model()->findAll(),'idficha','ip'); ?>
 	<?php echo $form->dropDownListGroup($model, 'idficha',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos1))); ?>
 
 	

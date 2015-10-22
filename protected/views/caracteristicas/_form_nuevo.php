@@ -10,12 +10,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<?php 
-        $sql = "select nficha from ficha where idficha=17";
-        $datos = Yii::app()->db->createCommand($sql)->queryAll();
-        $datos1 = CHtml::listData(Ficha::model()->findAll(),'idficha','nficha'); ?>
-	<?php echo $form->dropDownListGroup($model, 'idficha',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos))); ?>
-       
+	
         <?php $datosele = CHtml::listData(Elementos::model()->findAll(),'idelemento','nomele'); ?>
 	<?php echo $form->dropDownListGroup($model, 'idelemento',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datosele))); ?>
        

@@ -22,15 +22,22 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'nficha',
-		'idarea',
-		'idactividad',
+		array(
+                    'name' =>'idarea',
+                    'value'=>$model->pkdepartamento->nomdepar),
+		array(
+                    'name' =>'idactividad',
+                    'value'=>$model->pkactividad->nomactividad),
+                
 		'fecha',
 		'responsable',
 		'antiguedad',
 		'ip',
 		'mac',
 		'wireless',
-		'idusuario',
+		array(
+                    'name' =>'idusuario',
+                    'value'=>$model->pkusuario->nomusu),
 		'nomusured',
 	),
 )); ?>

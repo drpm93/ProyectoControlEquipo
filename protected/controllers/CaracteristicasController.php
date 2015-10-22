@@ -81,8 +81,13 @@ class CaracteristicasController extends Controller
 
         public function actionCreate_Nuevo()
 	{
+            
+            $fichaid = $_GET['id'];
+            
+            
 		$model=new Caracteristicas;
-
+                $model->idficha = $fichaid;
+               
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 

@@ -69,7 +69,7 @@ array('label' => 'Lista de usuarios', 'url' =>array('/usuarios/admin')),
         'visible' =>!YII::app()->user->isGuest,
         'items' => array(
         array('label'=>'Fichas de equipos', 'url'=>array('caracteristicas/admin')),
-        array('label'=>'Equipos', 'url'=>array('/direcciones/adminequipos')),
+        //array('label'=>'Equipos', 'url'=>array('/direcciones/adminequipos')),
             
 
             ),
