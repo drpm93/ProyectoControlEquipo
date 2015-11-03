@@ -49,6 +49,21 @@ array('label' => 'Lista de usuarios', 'url' =>array('/usuarios/admin')),
 )
 ),
     array(
+        'label'=>'Ficha de celulares',
+        'url' =>'#',
+        'visible' =>!YII::app()->user->isGuest,
+        'items' => array(
+        array('label'=>'Crear ficha de equipo celular', 'url'=>array('fichacelulares/create')),
+            array('label' => 'Lista de celulares registrados', 'url' =>array('/fichacelulares/admin')),
+           // '---',
+            
+            
+            
+
+            ),
+        
+    ),
+    array(
         'label'=>'Direccionamiento',
         'url' =>'#',
         'visible' =>!YII::app()->user->isGuest,
