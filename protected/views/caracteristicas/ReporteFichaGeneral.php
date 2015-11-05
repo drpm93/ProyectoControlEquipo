@@ -52,7 +52,7 @@
 
 <div style="text-align: right"><b>Fecha: </b><?php echo date("d/m/Y"); ?> </div>
 <?php foreach($model as $datof): 
-    $nficha = $datof->pkficha->nficha;
+    $nficha = $datof->pkficha->idficha;
     $area = $datof->pkficha->pkdepartamento->nomdepar;
     $actividad = $datof->pkficha->pkactividad->nomactividad;
     $fecha = $datof->pkficha->fecha;

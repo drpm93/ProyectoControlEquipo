@@ -16,12 +16,12 @@ $this->menu=array(
 );
 ?>
 
-<h1>Vista de ficha #<?php echo $model->nficha; ?></h1>
+<h1>Vista de ficha #<?php echo $model->idficha; ?></h1>
 
 <?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'nficha',
+		'idficha',
 		array(
                     'name' =>'idarea',
                     'value'=>$model->pkdepartamento->nomdepar),

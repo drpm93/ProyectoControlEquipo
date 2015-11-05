@@ -16,10 +16,7 @@
 		<?php echo $form->textField($model,'idficha'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'nficha'); ?>
-		<?php echo $form->textField($model,'nficha',array('size'=>5,'maxlength'=>5)); ?>
-	</div>
+	
 
 	<div class="row">
 		<?php echo $form->label($model,'idarea'); ?>

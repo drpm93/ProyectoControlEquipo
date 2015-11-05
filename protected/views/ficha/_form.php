@@ -10,8 +10,12 @@
 
 
 	<?php echo $form->errorSummary($model); ?>
-        
-       <?php echo $form->textFieldGroup($model,'nficha',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+        <?php $dato="SELECT MAX(idficha) FROM ficha;"; 
+        $consulta = Yii::app()->db->CreateCommand($dato)->queryScalar();
+        //$iddato = $consulta['0'];
+       
+        ?>
+       <?php echo $form->textFieldGroup($model,'idficha',array('widgetOptions'=>array('htmlOptions'=>array('value'=>$consulta+1,'disabled'=>true,'autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
         <?php echo $form->textFieldGroup($model,'ubicacion',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
 
         <?php $datos1 = CHtml::listData(Departamento::model()->findAll(),'iddepartamento','nomdepar'); ?>

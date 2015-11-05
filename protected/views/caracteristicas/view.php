@@ -23,7 +23,7 @@ $this->menu=array(
 		
 		array(
                     'name' =>'idficha',
-                    'value'=>$model->pkficha->nficha),
+                    'value'=>$model->pkficha->idficha),
                 array(
                     'name' =>'idelemento',
                     'value'=>$model->pkelemento->nomele),

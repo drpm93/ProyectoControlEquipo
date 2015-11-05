@@ -10,7 +10,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<?php $datos = CHtml::listData(Ficha::model()->findAll(),'idficha','nficha'); ?>
+	<?php $datos = CHtml::listData(Ficha::model()->findAll(),'idficha','idficha'); ?>
 	<?php echo $form->dropDownListGroup($model, 'idficha',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => $datos))); ?>
        
         <?php $datosele = CHtml::listData(Elementos::model()->findAll(),'idelemento','nomele'); ?>

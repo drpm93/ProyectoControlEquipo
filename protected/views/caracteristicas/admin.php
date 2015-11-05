@@ -30,11 +30,7 @@ $('.search-form form').submit(function(){
 	'filter'=>$model,
 	'columns'=>array(
 		
-		array(
-                    'name' =>'idficha',
-                    'value'=>'$data->pkficha->nficha',
-                    'filter'=>CHtml::activeTextField($model,'ficha',array('class'=>'form-control')),
-                    'htmlOptions'=>array('style'=>'height:40px;width:150px'),),     
+		'idficha',    
 		
 		
 		/*array('name'=> 'aplica',

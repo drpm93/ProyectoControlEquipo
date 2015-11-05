@@ -72,7 +72,7 @@ class Caracteristicas extends CActiveRecord
 	{
 		return array(
 			'idcaracteristica' => 'Idcaracteristica',
-			'idficha' => 'Número de ficha',
+			't.idficha' => 'Número de ficha',
 			
 			'aplica' => 'Aplica',
 			'noaplica' => 'No aplica',
@@ -106,9 +106,9 @@ class Caracteristicas extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idcaracteristica',$this->idcaracteristica);
-		$criteria->compare('idficha',$this->idficha);
+		$criteria->compare('t.idficha',$this->idficha);
                 $criteria->with = array('pkficha','pkmarca','pkelemento');
-                $criteria->addSearchCondition('pkficha.nficha', $this->ficha,true);
+                $criteria->addSearchCondition('pkficha.idficha', $this->ficha,true);
 		
 		$criteria->compare('aplica',$this->aplica);
 		$criteria->compare('noaplica',$this->noaplica);

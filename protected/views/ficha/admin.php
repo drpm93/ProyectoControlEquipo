@@ -75,7 +75,7 @@ $date = $this->widget('zii.widgets.jui.CJuiDatePicker', array(
 	'filter'=>$model,
         'type' => 'striped bordered condensed',
 	'columns'=>array(
-		'nficha',
+		'idficha',
                 array(
                     'name' =>'idarea',
                     'value'=>'$data->pkdepartamento->nomdepar',

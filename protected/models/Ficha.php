@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'ficha':
  * @property integer $idficha
- * @property string $nficha
  * @property integer $idarea
  * @property integer $idactividad
  * @property string $fecha
@@ -42,9 +41,9 @@ class Ficha extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nficha, idarea, idactividad, idusuario,fecha, antiguedad, ip, mac', 'required'),
+			array('idarea, idactividad, idusuario,fecha, antiguedad, ip, mac', 'required'),
 			array('idarea, idusuario,idactividad', 'numerical', 'integerOnly'=>true),
-			array('nficha', 'length', 'max'=>5),
+			
 			array('responsable', 'length', 'max'=>60),
 			array('antiguedad', 'length', 'max'=>40),
                         array('ubicacion', 'length', 'max'=>100),
@@ -52,7 +51,7 @@ class Ficha extends CActiveRecord
 			array('mac, wireless, nomusured', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idficha, nficha, usuario,idarea, idusuario,fecha1,idactividad, fecha, ubicacion,departamento,actividad,responsable, antiguedad, ip, mac, wireless,  nomusured', 'safe', 'on'=>'search'),
+			array('idficha, usuario,idarea, idusuario,fecha1,idactividad, fecha, ubicacion,departamento,actividad,responsable, antiguedad, ip, mac, wireless,  nomusured', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,7 +79,6 @@ class Ficha extends CActiveRecord
 	{
 		return array(
 			'idficha' => 'Idficha',
-			'nficha' => 'Número de ficha',
 			'idarea' => 'Departamento',
 			'idactividad' => 'Actividad',
 			'fecha' => 'Fecha de registro',
@@ -120,7 +118,7 @@ class Ficha extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idficha',$this->idficha);
-		$criteria->compare('nficha',$this->nficha,true);
+		
 		$criteria->compare('idarea',$this->idarea);
                 $criteria->with = array('pkdepartamento');
                 $criteria->addSearchCondition('pkdepartamento.nomdepar', $this->departamento, true);
