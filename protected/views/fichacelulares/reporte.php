@@ -66,7 +66,7 @@ $('.search-form form').submit(function(){
 <br>
 <center>
 <div class="enlaceboton" style="width: 180px">
-<?php echo CHtml::link(CHtml::image(Yii::app()->baseUrl."/images/pdf.jpg","Generar reporte PDF",array("title"=>"Exportar a PDF")),array("generarpdf"), array('target'=>'_blank')); ?>
+<?php echo CHtml::link(CHtml::image(Yii::app()->baseUrl."/images/pdf.jpg","Generar reporte PDF",array("title"=>"Exportar a PDF")),array("generarpdfacta"), array('target'=>'_blank')); ?>
 </div>
     
 </center>

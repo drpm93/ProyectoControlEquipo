@@ -84,6 +84,8 @@ array('label' => 'Lista de usuarios', 'url' =>array('/usuarios/admin')),
         'visible' =>!YII::app()->user->isGuest,
         'items' => array(
         array('label'=>'Fichas de equipos', 'url'=>array('caracteristicas/admin')),
+        array('label'=>'Fichas de equipos celulares', 'url'=>array('fichacelulares/admin')),  
+        array('label'=>'Actas de equipos celulares', 'url'=>array('fichacelulares/reporte')), 
         //array('label'=>'Equipos', 'url'=>array('/direcciones/adminequipos')),
             
 

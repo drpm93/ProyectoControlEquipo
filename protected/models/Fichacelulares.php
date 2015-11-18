@@ -121,6 +121,11 @@ class Fichacelulares extends CActiveRecord
 		$criteria->compare('fechaini',$this->fechaini,true);
 		$criteria->compare('fechafinal',$this->fechafinal,true);
 
+		$session=new CHttpSession;
+                            $session->open();
+
+                            $session['reporte_fichascelu']=$criteria;  //Esto para guardar la criteria en la sesión actual para usarlo posteriormente.
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

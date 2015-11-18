@@ -12,7 +12,8 @@
 
 	<?php echo $form->textFieldGroup($model,'numero',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
         <?php echo $form->textFieldGroup($model,'duenio',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
-        <?php echo $form->textFieldGroup($model,'responsable',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
+        <?php echo $form->dropDownListGroup($model, 'responsable',array('wrapperHtmlOptions' => array('class' => 'col-sm-5',),'widgetOptions' => array('data' => array('GONDI'=>'GONDI','STOLLER'=>'STOLLER','PERSONAL'=>'PERSONAL','JD'=>'JD','PACIFICO PESCA'=>'PACIFICO PESCA','FABRICA DE HIELO'=>'FABRICA DE HIELO','POSORJA'=>'POSORJA')))); ?>
+        <?php //echo $form->textFieldGroup($model,'responsable',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
         <?php echo $form->textFieldGroup($model,'simcard',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
         <?php echo $form->textFieldGroup($model,'imei',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>
         <?php echo $form->textFieldGroup($model,'marca',array('widgetOptions'=>array('htmlOptions'=>array('autocomplete'=>'off','style'=>'text-transform:uppercase','onblur'=>'this.value=this.value.toUpperCase()')))); ?>

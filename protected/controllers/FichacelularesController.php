@@ -32,7 +32,7 @@ class FichacelularesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','generarpdf','reportefichacelu','generarpdfacta','reporte'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -211,4 +211,82 @@ class FichacelularesController extends Controller
 			Yii::app()->end();
 		}
 	}
+        //funcion para generar el reporte
+        public function actionReporteFichaCelu(){
+                $model=new Fichacelulares('search');
+		$model->unsetAttributes();  // clear any default values
+                if(isset($_GET['Fichacelulares']))
+			$model->attributes=$_GET['Fichacelulares'];
+		$this->render('admin',array(
+			'model'=>$model,
+		));
+        }
+        //funcion para generar pdf
+        public function actionGenerarPdf()
+      {
+          $session=new CHttpSession;
+          $session->open();
+          if(isset($session['reporte_fichascelu']))
+          //Si hay datos filtrados entonces usar la criteria guardada en la sesion (esto lo guardamos en la funcion search() del modelo)
+          {
+          $model= Fichacelulares::model()->findAll($session['reporte_fichascelu']);
+          }
+          else
+          //Si no hay datos filtrados exportar todo
+          {
+          $model = Fichacelulares::model()->findAll(); //Consulta para buscar todos los registros
+          }
+         $mPDF1 = Yii::app()->ePdf->mpdf('utf-8','A4','','',15,15,35,25,9,9,'L'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
+         $mPDF1->useOnlyCoreFonts = true;
+         $mPDF1->SetTitle("Reporte");
+         $mPDF1->SetAuthor("GONDI");
+         $mPDF1->AddPage('L');
+         //$mPDF1->SetWatermarkText("Pacientes");
+         $mPDF1->showWatermarkText = true;
+         $mPDF1->watermark_font = 'DejaVuSansCondensed';
+         $mPDF1->watermarkTextAlpha = 0.1;
+         $mPDF1->SetDisplayMode('fullpage');
+         $mPDF1->WriteHTML($this->renderPartial('ReporteFichas', array('model'=>$model), true)); //hacemos un render partial a una vista preparada, en este caso es la vista pdfReport
+         $mPDF1->Output('ReporteFichaCelu'.date('YmdHis'),'I');  //Nombre del pdf y parámetro para ver pdf o descargarlo directamente.
+         exit;
+       }
+       //funcion para generar el reporte
+        public function actionReporte(){
+                $model=new Fichacelulares('search');
+		$model->unsetAttributes();  // clear any default values
+                if(isset($_GET['Fichacelulares']))
+			$model->attributes=$_GET['Fichacelulares'];
+		$this->render('reporte',array(
+			'model'=>$model,
+		));
+        }
+        //funcion para generar pdf
+        public function actionGenerarPdfActa()
+      {
+          $session=new CHttpSession;
+          $session->open();
+          if(isset($session['reporte_fichascelu']))
+          //Si hay datos filtrados entonces usar la criteria guardada en la sesion (esto lo guardamos en la funcion search() del modelo)
+          {
+          $model= Fichacelulares::model()->findAll($session['reporte_fichascelu']);
+          }
+          else
+          //Si no hay datos filtrados exportar todo
+          {
+          $model = Fichacelulares::model()->findAll(); //Consulta para buscar todos los registros
+          }
+         $mPDF1 = Yii::app()->ePdf->mpdf('utf-8','A4','','',15,15,35,25,9,9,'L'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
+         $mPDF1->useOnlyCoreFonts = true;
+         $mPDF1->SetTitle("Reporte");
+         $mPDF1->SetAuthor("GONDI");
+         $mPDF1->AddPage('P');
+         //$mPDF1->SetWatermarkText("Pacientes");
+         $mPDF1->showWatermarkText = true;
+         $mPDF1->watermark_font = 'DejaVuSansCondensed';
+         $mPDF1->watermarkTextAlpha = 0.1;
+         $mPDF1->SetDisplayMode('fullpage');
+         $mPDF1->WriteHTML($this->renderPartial('ReporteActa', array('model'=>$model), true)); //hacemos un render partial a una vista preparada, en este caso es la vista pdfReport
+         $mPDF1->Output('ReporteActa'.date('YmdHis'),'I');  //Nombre del pdf y parámetro para ver pdf o descargarlo directamente.
+         exit;
+       }
 }
