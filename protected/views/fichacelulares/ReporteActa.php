@@ -38,12 +38,7 @@
  </tr></table>
  </htmlpageheader>
  
-<htmlpagefooter name="myfooter">
- <div style="border-top: 1px solid #000000; font-size: 9pt; text-align: center; padding-top: 3mm; ">
- Página {PAGENO} de {nb}
- </div>
 
- </htmlpagefooter>
  
 <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
  <sethtmlpagefooter name="myfooter" value="on" />
